@@ -1,11 +1,10 @@
-import Ember from 'ember';
-import filterByQuery from 'ember-cli-filter-by-query';
+import filterByQuery from 'ember-cli-filter-by-query/util/filter';
 import { test } from 'ember-qunit';
 import { module } from 'qunit';
 
 var array;
 
-module('sync-for-each');
+module('utility function test');
 
 test('it returns an array', function(assert) {
   var input, output;
