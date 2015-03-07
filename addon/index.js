@@ -1,18 +1,23 @@
 import Ember from 'ember';
 /*global Sifter*/
 
-var filterByQuery = function(array, propertyKey, query) {
+var filterByQuery = function(array, propertyKeys, query) {
   var input, sifter, result;
+  propertyKeys = Ember.makeArray(propertyKeys);
 
   input = array.map(function(item) {
-    return { id: Ember.get(item, 'id'), property: Ember.get(item, propertyKey) };
+    var obj = { id: Ember.get(item, 'id')};
+    propertyKeys.forEach(function(key) {
+      obj[key] = Ember.get(item, key);
+    });
+    return obj;
   });
 
   sifter = new Sifter(input);
 
   result = sifter.search(query, {
-    fields: [propertyKey],
-    sort: [{field: propertyKey, direction: 'asc'}],
+    fields: propertyKeys,
+    sort: propertyKeys.map(function(key) {return {field: key, direction: 'asc'};}),
     limit: array.length
   });
 

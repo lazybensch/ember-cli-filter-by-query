@@ -12,13 +12,13 @@ test('it returns an array', function(assert) {
   assert.expect(1);
 
   input = [
-    {id: 1, property: 'psopo'},
-    {id: 2, property: 'aapro'},
-    {id: 3, property: 'prsss'},
+    {id: 1, foo: 'psopao', bar: 'opoko' },
+    {id: 2, foo: 'aapoko', bar: 'aaa'},
+    {id: 3, foo: 'prsss', bar: 'aa'},
   ];
 
-  output = filterByQuery(input, 'property', 'pr');
-  assert.deepEqual(output, [input[2], input[1]]);
+  output = filterByQuery(input, ['foo','bar'], 'po');
+  assert.deepEqual(output, [input[0], input[1]]);
 
 
 });
