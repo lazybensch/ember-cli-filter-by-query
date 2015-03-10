@@ -38,6 +38,29 @@ filterByQuery( guy.get('friends'), ['name','surname'], controller.get('query'));
 
 Notice that in this case, the first and last argument can't be property keys anymore but have to be the actuall array and query.
 
+## additional Options
+
+It is possible to pass a set of different options to the computed property macro aswell as to the utility function.
+
+| Option        | Type | Description  |
+| ------------- |:-----|:------|
+| filter        | boolean | If false, items with a score of zero will not be filtered out of the result-set. |
+| conjunction   | string  | Determines how multiple search terms are joined ("and" or "or"). |
+
+```javascript
+import computedFilterByQuery from 'ember-cli-filter-by-query';
+
+Guy = DS.Model.extend({
+
+  smallList: computedFilterByQuery( 'friends', ['name', 'surname'], 'query', {conjunction: 'and' })
+  // this will only list friends whos name or surname include every word in the query
+
+  largeList: computedFilterByQuery( 'friends', ['name', 'surname'], 'query', {conjunction: 'or' })
+  // this will list friends whos name or surname include at least one word of the query
+
+});
+```
+
 ## Installation
 
 To use this addon in your project, just type:
