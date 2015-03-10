@@ -6,7 +6,7 @@ var array;
 
 module('utility function test');
 
-test('it returns an array', function(assert) {
+test('filters with "or" conjunction', function(assert) {
   var input, output;
   assert.expect(1);
 
@@ -16,8 +16,22 @@ test('it returns an array', function(assert) {
     {id: 3, foo: 'prsss', bar: 'aa'},
   ];
 
-  output = filterByQuery(input, ['foo','bar'], 'po');
-  assert.deepEqual(output, [input[0], input[1]]);
+  output = filterByQuery(input, ['foo','bar'], 'po aa', {conjunction: 'or'});
+  assert.deepEqual(output, [input[1], input[2], input[0]]);
 
+});
+
+test('filters with "and" conjunction', function(assert) {
+  var input, output;
+  assert.expect(1);
+
+  input = [
+    {id: 1, foo: 'psopao', bar: 'opoko' },
+    {id: 2, foo: 'aapoko', bar: 'aaa'},
+    {id: 3, foo: 'prsss', bar: 'aa'},
+  ];
+
+  output = filterByQuery(input, ['foo','bar'], 'po aa', {conjunction: 'and'});
+  assert.deepEqual(output, [input[1]]);
 
 });
