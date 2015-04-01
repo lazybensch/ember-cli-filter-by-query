@@ -2,6 +2,11 @@ import Ember from 'ember';
 /*global Sifter*/
 
 var filterByQuery = function(array, propertyKeys, query, options) {
+
+  if (!query) {
+    return array;
+  }
+
   options = Ember.typeOf(options) === 'undefined' ? {} : options;
   propertyKeys = Ember.makeArray(propertyKeys);
   var input, sifter, result;
