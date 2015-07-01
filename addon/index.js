@@ -6,7 +6,7 @@ var computedFilterByQuery = function(dependentKey, propertyKeys, queryKey, optio
 
   return Ember.computed( queryKey, '' + dependentKey + '.@each.{' + propertyKeys.join(',') + '}', function() {
 
-    var array = Ember.makeArray(this.get(dependentKey));
+    var array = this.get(dependentKey);
     var query = this.get(queryKey) || '';
 
     return filterByQuery(array, propertyKeys, query, options);
