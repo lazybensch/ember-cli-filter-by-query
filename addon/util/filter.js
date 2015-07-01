@@ -29,7 +29,7 @@ var filterByQuery = function(array, propertyKeys, query, options) {
   result = sifter.search(query, options);
 
   return result.items.map( function(item) {
-    return array[item.id];
+    return array.objectAt(item.id);
   });
 
 };
