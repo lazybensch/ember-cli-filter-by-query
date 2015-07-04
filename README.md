@@ -36,7 +36,7 @@ import filterByQuery from 'ember-cli-filter-by-query/util/filter';
 filterByQuery( guy.get('friends'), ['name','surname'], controller.get('query'));
 ```
 
-Notice that in this case, the first and last argument can't be property keys anymore but have to be the actuall array and query.
+Notice that in this case, the first and last argument can't be property keys anymore but have to be the actual array and query.
 
 ## additional Options
 
@@ -44,8 +44,9 @@ It is possible to pass a set of different options to the computed property macro
 
 | Option        | Type | Description  |
 | ------------- |:-----|:------|
-| filter        | boolean | If false, items with a score of zero will not be filtered out of the result-set. |
+| filter        | boolean | If `false`, items with a score of zero will not be filtered out of the result-set. |
 | conjunction   | string  | Determines how multiple search terms are joined ("and" or "or"). |
+| sort          | boolean  | Default is `true`. If `true`, the output is sorted by score. If `false`, the output is in the same order as the input. |
 
 ```javascript
 import computedFilterByQuery from 'ember-cli-filter-by-query';
@@ -65,7 +66,7 @@ Guy = DS.Model.extend({
 
 To use this addon in your project, just type:
 ```
-$ ember install:addon ember-cli-filter-by-query
+$ ember install ember-cli-filter-by-query
 ```
 or for older versions of ember-cli *(pre 1.4.0)*:
 ```
