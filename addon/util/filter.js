@@ -9,8 +9,10 @@ var filterByQuery = function(array, propertyKeys, query, options) {
 
   options = Ember.typeOf(options) === 'undefined' ? {} : options;
   propertyKeys = Ember.makeArray(propertyKeys);
-  var input, sifter, result;
-
+  var input, sifter, result, sort;
+  sort = 'sort' in options ? options.sort : true;
+  delete options['sort'];
+  
   input = array.map(function(item) {
     var hash = {};
     propertyKeys.forEach(function(key) {
@@ -21,11 +23,18 @@ var filterByQuery = function(array, propertyKeys, query, options) {
 
   options.fields = options.fields || propertyKeys;
   options.limit = options.limit || array.length;
-  options.sort = propertyKeys.map(function(key) {
-    return {field: key, direction: 'asc'};
-  });
+  if (sort) {
+    options.sort = propertyKeys.map(function(key) {
+      return {field: key, direction: 'asc'};
+    });
+  }
 
   sifter = new Sifter(input);
+  if (!sort) {
+    sifter.getSortFunction = function() {
+      return null;
+    };
+  }
   result = sifter.search(query, options);
 
   return result.items.map( function(item) {
