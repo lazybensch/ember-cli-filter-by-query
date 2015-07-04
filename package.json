@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-filter-by-query",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Provides you with a computed property that filters an array by a given search query. The output is sorted by similarity to the query.",
   "directories": {
     "doc": "doc",
