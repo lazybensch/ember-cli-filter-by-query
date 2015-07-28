@@ -3,6 +3,6 @@
 module.exports = {
   normalizeEntityName: function() {},
   afterInstall: function() {
-    return this.addBowerPackageToProject('sifter', '~0.4.1');
+    return this.addBowerPackageToProject('sifter', '~0.4.3');
   }
 };
