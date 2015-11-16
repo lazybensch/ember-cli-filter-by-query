@@ -38,7 +38,7 @@ var filterByQuery = function(array, propertyKeys, query, options) {
   result = sifter.search(query, options);
 
   return result.items.map( function(item) {
-    return array.objectAt(item.id);
+    return Ember.A(array).objectAt(item.id);
   });
 
 };
