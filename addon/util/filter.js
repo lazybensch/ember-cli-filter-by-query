@@ -4,7 +4,7 @@ import Ember from 'ember';
 var filterByQuery = function(array, propertyKeys, query, options) {
 
   if (!query) {
-    return array;
+    return Ember.A(array);
   }
 
   options = Ember.typeOf(options) === 'undefined' ? {} : options;
