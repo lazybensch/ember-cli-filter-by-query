@@ -2,8 +2,6 @@ import filterByQuery from 'ember-cli-filter-by-query/util/filter';
 import { test } from 'ember-qunit';
 import { module } from 'qunit';
 
-var array;
-
 module('utility function test');
 
 test('filters with "or" conjunction', function(assert) {
@@ -51,9 +49,8 @@ test('sort: true & sort: false', function(assert) {
 
   output = filterByQuery(input, ['foo','bar'], 'po aa', {sort: true});
   assert.deepEqual(output, [input[1], input[2], input[0]]);
-  
+
   output = filterByQuery(input, ['foo','bar'], 'po aa', {sort: false});
   assert.deepEqual(output, [input[0], input[1], input[2]]);
 
 });
-
