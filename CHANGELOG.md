@@ -1,3 +1,7 @@
+### 1.2.0 (March 12, 2016)
+
+- [#11](https://github.com/lazybensch/ember-cli-filter-by-query/pull/11) [ENHANCEMENT] Support ember-cli 2.4.2
+
 ### 1.1.0 (July 04, 2015)
 
 - [#8](https://github.com/lazybensch/ember-cli-filter-by-query/pull/8) [FEATURE] Add no-sort option
