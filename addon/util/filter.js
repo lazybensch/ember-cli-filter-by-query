@@ -1,5 +1,5 @@
 import Ember from 'ember';
-/*global Sifter*/
+import Sifter from 'sifter';
 
 var filterByQuery = function(array, propertyKeys, query, options) {
 
@@ -12,7 +12,7 @@ var filterByQuery = function(array, propertyKeys, query, options) {
   var input, sifter, result, sort;
   sort = 'sort' in options ? options.sort : true;
   delete options['sort'];
-  
+
   input = array.map(function(item) {
     var hash = {};
     propertyKeys.forEach(function(key) {
