@@ -1,10 +1,11 @@
-import Ember from 'ember';
+import { makeArray } from '@ember/array';
+import { computed } from '@ember/object';
 import filterByQuery from 'ember-cli-filter-by-query/util/filter';
 
 var computedFilterByQuery = function(dependentKey, propertyKeys, queryKey, options) {
-  propertyKeys = Ember.makeArray(propertyKeys);
+  propertyKeys = makeArray(propertyKeys);
 
-  return Ember.computed( queryKey, '' + dependentKey + '.@each.{' + propertyKeys.join(',') + '}', function() {
+  return computed( queryKey, '' + dependentKey + '.@each.{' + propertyKeys.join(',') + '}', function() {
 
     var array = this.get(dependentKey);
     var query = this.get(queryKey) || '';

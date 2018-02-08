@@ -1,14 +1,16 @@
-import Ember from 'ember';
+import { A, makeArray} from '@ember/array';
+import { typeOf } from '@ember/utils';
+import { get } from '@ember/object';
 import Sifter from 'sifter';
 
 var filterByQuery = function(array, propertyKeys, query, options) {
 
   if (!query) {
-    return Ember.A(array);
+    return A(array);
   }
 
-  options = Ember.typeOf(options) === 'undefined' ? {} : options;
-  propertyKeys = Ember.makeArray(propertyKeys);
+  options = typeOf(options) === 'undefined' ? {} : options;
+  propertyKeys = makeArray(propertyKeys);
   var input, sifter, result, sort;
   sort = 'sort' in options ? options.sort : true;
   delete options['sort'];
@@ -16,7 +18,7 @@ var filterByQuery = function(array, propertyKeys, query, options) {
   input = array.map(function(item) {
     var hash = {};
     propertyKeys.forEach(function(key) {
-      hash[key] = Ember.get(item, key);
+      hash[key] = get(item, key);
     });
     return hash;
   });
@@ -37,8 +39,8 @@ var filterByQuery = function(array, propertyKeys, query, options) {
   }
   result = sifter.search(query, options);
 
-  return Ember.A(result.items.map( function(item) {
-    return Ember.A(array).objectAt(item.id);
+  return A(result.items.map( function(item) {
+    return A(array).objectAt(item.id);
   }));
 
 };
