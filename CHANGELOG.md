@@ -1,3 +1,7 @@
+### 1.3.0 (March 03, 2018)
+
+- [#12](https://github.com/lazybensch/ember-cli-filter-by-query/pull/12) [ENHANCEMENT] Remove sifter.js bower dependency
+
 ### 1.2.0 (March 12, 2016)
 
 - [#11](https://github.com/lazybensch/ember-cli-filter-by-query/pull/11) [ENHANCEMENT] Support ember-cli 2.4.2

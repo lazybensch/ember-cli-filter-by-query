@@ -89,6 +89,5 @@ I am happy about any contributions or PRs. If you are missing some piece of func
 * `git clone https://github.com/lazybensch/ember-cli-filter-by-query`
 * `cd ember-cli-filter-by-query`
 * `npm install`
-* `bower install`
+* `bower install` // As of ember-cli-filter-by-query 1.3.0 this step is not needed.
 * `ember test`
-

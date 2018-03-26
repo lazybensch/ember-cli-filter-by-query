@@ -1,61 +1,61 @@
-import Ember from 'ember';
 import computedFilterByQuery from 'ember-cli-filter-by-query';
 import { test } from 'ember-qunit';
 import { module } from 'qunit';
+import Object from '@ember/object';
 
 var Type, obj, germany, algeria, nigeria;
 var france, russia, mexico, somalia, brittain;
 module('computed property test', {
   beforeEach: function() {
-    Type = Ember.Object.extend({
+    Type = Object.extend({
       foo: computedFilterByQuery('list', 'country', 'query'),
       bar: computedFilterByQuery('list', 'continent', 'query'),
       baz: computedFilterByQuery('list', ['continent', 'country'], 'query'),
     });
 
-    germany = Ember.Object.create({
+    germany = Object.create({
       country: 'Germany',
       capital: 'Berlin',
       continent: 'Europe'
     });
 
-    algeria = Ember.Object.create({
+    algeria = Object.create({
       country: 'Algeria',
       capital: 'Algiers',
       continent: 'Africa'
     });
 
-    nigeria = Ember.Object.create({
+    nigeria = Object.create({
       country: 'Nigeria',
       capital: 'Abuja',
       continent: 'Africa'
     });
 
-    france = Ember.Object.create({
+    france = Object.create({
       country: 'France',
       capital: 'Paris',
       continent: 'Europe'
     });
 
-    russia = Ember.Object.create({
+    russia = Object.create({
       country: 'Russia',
       capital: 'Moscow',
       continent: 'Europe/Asia'
     });
 
-    mexico = Ember.Object.create({
+    mexico = Object.create({
       country: 'Mexico',
       capital: 'Mexico City',
       continent: 'North America'
     });
 
-    somalia = Ember.Object.create({
+    somalia = Object.create({
       country: 'Somalia',
       capital: 'Mogadishu',
       continent: 'Africa'
     });
 
-    brittain = Ember.Object.create({
+    brittain = Object.create({
       country: 'Great Brittain',
       capital: 'London',
       continent: 'Europe'
