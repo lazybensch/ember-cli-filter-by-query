@@ -1,3 +1,8 @@
+### 1.3.1 (February 07, 2020)
+
+- [ENHANCEMENT] Make get compatible with @glimmer/component
+- [BUGFIX] Switch Travis to node 10
+
 ### 1.3.0 (March 03, 2018)
 
 - [#12](https://github.com/lazybensch/ember-cli-filter-by-query/pull/12) [ENHANCEMENT] Remove sifter.js bower dependency
