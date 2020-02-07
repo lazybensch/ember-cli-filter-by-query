@@ -1,5 +1,5 @@
 import { makeArray } from '@ember/array';
-import { computed } from '@ember/object';
+import { computed, get } from '@ember/object';
 import filterByQuery from 'ember-cli-filter-by-query/util/filter';
 
 var computedFilterByQuery = function(dependentKey, propertyKeys, queryKey, options) {
@@ -7,8 +7,8 @@ var computedFilterByQuery = function(dependentKey, propertyKeys, queryKey, optio
 
   return computed( queryKey, '' + dependentKey + '.@each.{' + propertyKeys.join(',') + '}', function() {
 
-    var array = this.get(dependentKey);
-    var query = this.get(queryKey) || '';
+    var array = get(this, dependentKey);
+    var query = get(this, queryKey) || '';
 
     return filterByQuery(array, propertyKeys, query, options);
 
