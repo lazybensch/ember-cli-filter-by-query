@@ -24,7 +24,6 @@ var filterByQuery = function(array, propertyKeys, query, options) {
   });
 
   options.fields = options.fields || propertyKeys;
-  options.limit = options.limit || array.length;
   if (sort) {
     options.sort = propertyKeys.map(function(key) {
       return {field: key, direction: 'asc'};
