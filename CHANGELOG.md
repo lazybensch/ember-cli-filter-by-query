@@ -1,3 +1,7 @@
+### 1.3.2 (March 02, 2021)
+
+- [#13](https://github.com/lazybensch/ember-cli-filter-by-query/pull/13) [BUGFIX] Don't set options.limit to array.length
+
 ### 1.3.1 (February 07, 2020)
 
 - [ENHANCEMENT] Make get compatible with @glimmer/component
