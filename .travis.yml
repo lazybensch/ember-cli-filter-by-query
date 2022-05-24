@@ -23,14 +23,18 @@ env:
     - EMBER_TRY_SCENARIO=ember-lts-3.24
     - EMBER_TRY_SCENARIO=ember-lts-3.28
     - EMBER_TRY_SCENARIO=ember-release
-
+    
+matrix:
+  allow_failures:
+    - env: EMBER_TRY_SCENARIO=ember-beta
+    - env: EMBER_TRY_SCENARIO=ember-canary
+    - env: EMBER_TRY_SCENARIO=embroider-safe
+    - env: EMBER_TRY_SCENARIO=embroider-optimized
 
 branches:
   only:
     - master
 
 script:
-  - npm run license
-  - npm run lint:hbs
   - npm run lint:js
   - npm test
