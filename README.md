@@ -1,9 +1,10 @@
 # Ember-cli-filter-by-query
+
 [![Build Status](https://travis-ci.org/lazybensch/ember-cli-filter-by-query.svg)](https://travis-ci.org/lazybensch/ember-cli-filter-by-query) [![Code Climate](https://codeclimate.com/github/lazybensch/ember-cli-filter-by-query/badges/gpa.svg)](https://codeclimate.com/github/lazybensch/ember-cli-filter-by-query)
 
 This addon provides you with a computed property macro to filter an array of objects based on a given search query. Other related addons often export components that might not suit your needs, `ember-cli-filter-by-query` only exports the macro and the filtering function itself so you can do whatever you want with it. Since the filtered list will always be sorted based on similarity to the search query a popular usecase could be autocompletion.
 
-Under the hood it uses [sifter.js](https://github.com/brianreavis/sifter.js/), which is *most likely* faster then any filter solution you or I could come up with ;)
+Under the hood it uses [sifter.js](https://github.com/brianreavis/sifter.js/), which is _most likely_ faster then any filter solution you or I could come up with ;)
 
 ## Example
 
@@ -11,20 +12,17 @@ Under the hood it uses [sifter.js](https://github.com/brianreavis/sifter.js/), w
 import computedFilterByQuery from 'ember-cli-filter-by-query';
 
 Guy = DS.Model.extend({
-
-  filteredList: computedFilterByQuery('friends', 'name', 'query')
-
+  filteredList: computedFilterByQuery('friends', 'name', 'query'),
 });
 ```
+
 `filteredList` will include all friends, whos names match the value of the `query` property - sorted by similarity to the search term. You can also pass an array of property keys as the second argument and both will be matched - ordered with preceding priority.
 
 ```javascript
 import computedFilterByQuery from 'ember-cli-filter-by-query';
 
 Guy = DS.Model.extend({
-
-  filteredList: computedFilterByQuery( 'friends', ['name', 'surname'], 'query')
-
+  filteredList: computedFilterByQuery('friends', ['name', 'surname'], 'query'),
 });
 ```
 
@@ -33,7 +31,7 @@ Guy = DS.Model.extend({
 ```javascript
 import filterByQuery from 'ember-cli-filter-by-query/util/filter';
 
-filterByQuery( guy.get('friends'), ['name','surname'], controller.get('query'));
+filterByQuery(guy.get('friends'), ['name', 'surname'], controller.get('query'));
 ```
 
 Notice that in this case, the first and last argument can't be property keys anymore but have to be the actual array and query.
@@ -42,11 +40,11 @@ Notice that in this case, the first and last argument can't be property keys any
 
 It is possible to pass a set of different options to the computed property macro aswell as to the utility function.
 
-| Option        | Type | Description  |
-| ------------- |:-----|:------|
-| filter        | boolean | If `false`, items with a score of zero will not be filtered out of the result-set. |
-| conjunction   | string  | Determines how multiple search terms are joined ("and" or "or"). |
-| sort          | boolean  | Default is `true`. If `true`, the output is sorted by score. If `false`, the output is in the same order as the input. |
+| Option      | Type    | Description                                                                                                            |
+| ----------- | :------ | :--------------------------------------------------------------------------------------------------------------------- |
+| filter      | boolean | If `false`, items with a score of zero will not be filtered out of the result-set.                                     |
+| conjunction | string  | Determines how multiple search terms are joined ("and" or "or").                                                       |
+| sort        | boolean | Default is `true`. If `true`, the output is sorted by score. If `false`, the output is in the same order as the input. |
 
 ```javascript
 import computedFilterByQuery from 'ember-cli-filter-by-query';
@@ -65,19 +63,26 @@ Guy = DS.Model.extend({
 ## Installation
 
 To use this addon in your project, just type:
+
 ```
 $ ember install ember-cli-filter-by-query
 ```
-or for older versions of ember-cli *(pre 1.4.0)*:
+
+or for older versions of ember-cli _(pre 1.4.0)_:
+
 ```
 $ npm install --save-dev ember-cli-filter-by-query
 $ ember generate ember-cli-filter-by-query
 ```
+
 and then import the function wherever you need it:
+
 ```
 import computedFilterByQuery from 'ember-cli-filter-by-query';
 ```
+
 or
+
 ```
 import filterByQuery from 'ember-cli-filter-by-query/util/filter';
 ```
@@ -86,8 +91,8 @@ import filterByQuery from 'ember-cli-filter-by-query/util/filter';
 
 I am happy about any contributions or PRs. If you are missing some piece of functionality please open an issue. This addon is quite simple and can be extended easily. It is using sifter.js internally which has a richer API than what i am exposing here.
 
-* `git clone https://github.com/lazybensch/ember-cli-filter-by-query`
-* `cd ember-cli-filter-by-query`
-* `npm install`
-* `bower install` // As of ember-cli-filter-by-query 1.3.0 this step is not needed.
-* `ember test`
+- `git clone https://github.com/lazybensch/ember-cli-filter-by-query`
+- `cd ember-cli-filter-by-query`
+- `npm install`
+- `bower install` // As of ember-cli-filter-by-query 1.3.0 this step is not needed.
+- `ember test`

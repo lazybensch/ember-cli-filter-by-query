@@ -1,18 +1,18 @@
-import { A, makeArray } from "@ember/array";
-import { typeOf } from "@ember/utils";
-import { get } from "@ember/object";
-import Sifter from "sifter";
+import { A, makeArray } from '@ember/array';
+import { typeOf } from '@ember/utils';
+import { get } from '@ember/object';
+import Sifter from 'sifter';
 
 var filterByQuery = function (array, propertyKeys, query, options) {
   if (!query) {
     return A(array);
   }
 
-  options = typeOf(options) === "undefined" ? {} : options;
+  options = typeOf(options) === 'undefined' ? {} : options;
   propertyKeys = makeArray(propertyKeys);
   var input, sifter, result, sort;
-  sort = "sort" in options ? options.sort : true;
-  delete options["sort"];
+  sort = 'sort' in options ? options.sort : true;
+  delete options['sort'];
 
   input = array.map(function (item) {
     var hash = {};
@@ -25,7 +25,7 @@ var filterByQuery = function (array, propertyKeys, query, options) {
   options.fields = options.fields || propertyKeys;
   if (sort) {
     options.sort = propertyKeys.map(function (key) {
-      return { field: key, direction: "asc" };
+      return { field: key, direction: 'asc' };
     });
   }
 

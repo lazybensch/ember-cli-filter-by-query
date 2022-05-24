@@ -4,7 +4,7 @@
 module.exports = {
   name: 'ember-cli-filter-by-query',
 
-  init: function() {
+  init: function () {
     this._super.init && this._super.init.apply(this, arguments);
   },
 };
