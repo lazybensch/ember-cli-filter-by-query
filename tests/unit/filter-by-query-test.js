@@ -1,6 +1,5 @@
 import filterByQuery from 'ember-cli-filter-by-query/util/filter';
-import { test } from 'ember-qunit';
-import { module } from 'qunit';
+import { module, test } from 'qunit';
 
 module('utility function test');
 

@@ -1,6 +1,5 @@
 import computedFilterByQuery from 'ember-cli-filter-by-query';
-import { test } from 'ember-qunit';
-import { module } from 'qunit';
+import { module, test } from 'qunit';
 import Object from '@ember/object';
 
 var Type, obj, germany, algeria, nigeria;
