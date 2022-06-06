@@ -1,83 +1,96 @@
 import computedFilterByQuery from 'ember-cli-filter-by-query';
-import { test } from 'ember-qunit';
-import { module } from 'qunit';
-import Object from '@ember/object';
+import { module, test } from 'qunit';
+import EmberObject from '@ember/object';
 
-var Type, obj, germany, algeria, nigeria;
+var obj, germany, algeria, nigeria;
 var france, russia, mexico, somalia, brittain;
-module('computed property test', {
-  beforeEach: function() {
-    Type = Object.extend({
-      foo: computedFilterByQuery('list', 'country', 'query'),
-      bar: computedFilterByQuery('list', 'continent', 'query'),
-      baz: computedFilterByQuery('list', ['continent', 'country'], 'query'),
-    });
 
-    germany = Object.create({
+module('computed property test', function (hooks) {
+  // setupTest(hooks);
+
+  hooks.beforeEach(function () {
+    class Type extends EmberObject {
+      @computedFilterByQuery('list', 'country', 'query') foo;
+      @computedFilterByQuery('list', 'continent', 'query') bar;
+      @computedFilterByQuery('list', ['continent', 'country'], 'query') baz;
+    }
+
+    germany = EmberObject.create({
       country: 'Germany',
       capital: 'Berlin',
-      continent: 'Europe'
+      continent: 'Europe',
     });
 
-    algeria = Object.create({
+    algeria = EmberObject.create({
       country: 'Algeria',
       capital: 'Algiers',
-      continent: 'Africa'
+      continent: 'Africa',
     });
 
-    nigeria = Object.create({
+    nigeria = EmberObject.create({
       country: 'Nigeria',
       capital: 'Abuja',
-      continent: 'Africa'
+      continent: 'Africa',
     });
 
-    france = Object.create({
+    france = EmberObject.create({
       country: 'France',
       capital: 'Paris',
-      continent: 'Europe'
+      continent: 'Europe',
     });
 
-    russia = Object.create({
+    russia = EmberObject.create({
       country: 'Russia',
       capital: 'Moscow',
-      continent: 'Europe/Asia'
+      continent: 'Europe/Asia',
     });
 
-    mexico = Object.create({
+    mexico = EmberObject.create({
       country: 'Mexico',
       capital: 'Mexico City',
-      continent: 'North America'
+      continent: 'North America',
     });
 
-    somalia = Object.create({
+    somalia = EmberObject.create({
       country: 'Somalia',
       capital: 'Mogadishu',
-      continent: 'Africa'
+      continent: 'Africa',
     });
 
-    brittain = Object.create({
+    brittain = EmberObject.create({
       country: 'Great Brittain',
       capital: 'London',
-      continent: 'Europe'
+      continent: 'Europe',
     });
 
     obj = Type.create({
-      list: [brittain, germany, algeria, nigeria, somalia, mexico, russia, france]
+      list: [
+        brittain,
+        germany,
+        algeria,
+        nigeria,
+        somalia,
+        mexico,
+        russia,
+        france,
+      ],
     });
-  }
-});
+  });
 
+  test('it filters a list', function (assert) {
+    assert.expect(3);
 
-test('it filters a list', function(assert) {
-  assert.expect(3);
+    obj.set('query', 'ger');
+    assert.deepEqual(
+      obj.get('foo'),
+      [germany, algeria, nigeria],
+      'it only includes matches'
+    );
 
-  obj.set('query', 'ger');
-  assert.deepEqual(obj.get('foo'), [germany, algeria, nigeria], 'it only includes matches');
+    obj.set('query', 'europe');
+    assert.deepEqual(obj.get('bar.length'), 4, 'filters case insensitive');
 
-  obj.set('query', 'europe');
-  assert.deepEqual(obj.get('bar.length'), 4, 'filters case insensitive');
-
-  obj.set('query', 'ri');
-  assert.deepEqual(obj.get('baz.length'), 5, 'respects property key order');
-
+    obj.set('query', 'ri');
+    assert.deepEqual(obj.get('baz.length'), 5, 'respects property key order');
+  });
 });
