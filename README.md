@@ -1,10 +1,15 @@
 # Ember-cli-filter-by-query
 
+
+
 [![Build Status](https://travis-ci.org/lazybensch/ember-cli-filter-by-query.svg)](https://travis-ci.org/lazybensch/ember-cli-filter-by-query) [![Code Climate](https://codeclimate.com/github/lazybensch/ember-cli-filter-by-query/badges/gpa.svg)](https://codeclimate.com/github/lazybensch/ember-cli-filter-by-query)
 
 This addon provides you with a computed property macro to filter an array of objects based on a given search query. Other related addons often export components that might not suit your needs, `ember-cli-filter-by-query` only exports the macro and the filtering function itself so you can do whatever you want with it. Since the filtered list will always be sorted based on similarity to the search query a popular usecase could be autocompletion.
 
 Under the hood it uses [sifter.js](https://github.com/brianreavis/sifter.js/), which is _most likely_ faster then any filter solution you or I could come up with ;)
+
+## Requirements
+- As of version 1.4.0 requires Ember 3.24 or higher (4.x included). For older Ember versions use version 1.3.2 or lower.
 
 ## Example
 
@@ -96,3 +101,8 @@ I am happy about any contributions or PRs. If you are missing some piece of func
 - `npm install`
 - `bower install` // As of ember-cli-filter-by-query 1.3.0 this step is not needed.
 - `ember test`
+
+## Changelog
+
+- **1.4.0**
+  - Updated to support Ember 4.x
