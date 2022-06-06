@@ -1,13 +1,13 @@
 import computedFilterByQuery from 'ember-cli-filter-by-query';
 import { module, test } from 'qunit';
-import { setupTest } from 'ember-qunit';
+import EmberObject from '@ember/object';
 
 var obj, germany, algeria, nigeria;
 var france, russia, mexico, somalia, brittain;
 
 module('computed property test', function (hooks) {
-  // setupTest(hooks);  
-  
+  // setupTest(hooks);
+
   hooks.beforeEach(function () {
     class Type extends EmberObject {
       @computedFilterByQuery('list', 'country', 'query') foo;
